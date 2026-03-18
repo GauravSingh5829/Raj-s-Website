@@ -1,0 +1,277 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;600&display=swap');
+
+.about {
+    margin: 70px auto;
+    max-width: 1200px;
+    padding: 40px;
+}
+
+.title {
+    margin-bottom: 70px;
+    font-size: 42px;
+    color: #777777;
+    text-align: center;
+    position: relative;
+}
+
+.title::after {
+    content: "";
+    width: 120px;
+    height: 3px;
+    background: #777777;
+    display: block;
+    margin: 15px auto 0;
+    border-radius: 2px;
+}
+
+.content {
+    display: flex;
+    align-items: flex-start; /* Changed from center to top-aligned */
+    justify-content: center;
+    gap: 80px;
+}
+
+/* UPDATED: Vertical stack for Photo and Spotify */
+.photo-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.photo-card {
+    width: 320px;
+    height: 420px;
+    perspective: 1000px;
+    cursor: pointer;
+}
+
+.photo-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.7s;
+    transform-style: preserve-3d;
+}
+
+.photo-inner.flip {
+    transform: rotateY(180deg);
+}
+
+.photo-front {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+}
+
+.photo-front img {
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+    object-fit: cover;
+    filter: grayscale(20%);
+    transition: 0.4s;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+}
+
+.photo-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transform: rotateY(180deg);
+    backface-visibility: hidden;
+}
+
+.photo-back img {
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+    object-fit: fit;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+}
+
+.photo-card:hover img {
+    transform: scale(1.05);
+}
+
+.text-about {
+    max-width: 520px;
+}
+
+.text-about p {
+    font-size: 18px;
+    line-height: 1.9;
+    color: #333333;
+    text-align: left;
+}
+
+#about {
+    scroll-margin-top: 40px;
+}
+
+/* --- SPOTIFY INTEGRATION STYLES --- */
+.spotify-card {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    background: rgba(0, 0, 0, 0.03);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 12px;
+    width: 320px; /* Matched to photo card width */
+    transition: 0.3s;
+}
+
+.spotify-card:hover {
+    background: rgba(0, 0, 0, 0.06);
+}
+
+.spotify-visual {
+    position: relative;
+    width: 45px;
+    height: 45px;
+    flex-shrink: 0;
+}
+
+.spotify-visual img {
+    width: 100%;
+    height: 100%;
+    border-radius: 6px;
+    object-fit: cover;
+    transition: 0.5s;
+}
+
+/* Vinyl rotation for live music */
+.spotify-visual img.playing {
+    border-radius: 50%;
+    animation: rotate-s 8s linear infinite;
+    border: 2px solid #1DB954;
+}
+
+.spotify-details {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.spotify-status-label {
+    font-family: 'Caveat', cursive;
+    font-size: 14px;
+    color: #1DB954;
+}
+
+.spotify-song {
+    color: #333;
+    font-size: 14px;
+    font-weight: 600;
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.spotify-artist {
+    color: #777;
+    font-size: 12px;
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+@keyframes rotate-s {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+/* --- NEW PORTFOLIO TEXT SECTION --- */
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 10px;
+}
+
+.hero-name {
+    font-family: 'Caveat', cursive;
+    font-size: 32px;
+    color: #555555; /* Adjusted to fit your light theme */
+    margin-bottom: 10px;
+}
+
+.hero-title {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    font-size: 44px;
+    font-weight: bold;
+    color: #222222;
+    line-height: 1.2;
+    margin: 0 0 25px 0;
+    text-align: left;
+}
+
+.text-about p.hero-description {
+    font-size: 17px;
+    line-height: 1.7;
+    color: #555555;
+    margin-bottom: 35px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 25px;
+    align-items: center;
+}
+
+.btn-primary {
+    background-color: #3b3b3b;
+    color: #ffffff;
+    padding: 12px 24px;
+    border-radius: 8px;
+    border: none;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #1a1a1a;
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: #333333;
+    border: none;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 10px 0;
+    transition: color 0.3s ease;
+}
+
+.btn-secondary:hover {
+    color: #000000;
+}
+.hero-roles {
+  font-size: 18px;
+  color: #888;
+  margin-top: 8px;
+  font-family: monospace;
+  letter-spacing: 1px;
+}
+
+.hero-roles::after {
+  content: "|";
+  animation: blink 1s infinite;
+  margin-left: 5px;
+}
+
+@keyframes blink {
+  0%, 50%, 100% { opacity: 1; }
+  25%, 75% { opacity: 0; }
+}
