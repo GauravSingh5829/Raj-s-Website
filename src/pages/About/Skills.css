@@ -1,5 +1,5 @@
 .skills{
-    margin-top:120px;
+    margin-top:70px;
     text-align:center;
 }
 
@@ -14,21 +14,27 @@
 .skills-slider{
     width:100%;
     overflow:hidden;
+    display: flex;
+    gap: 70px;
+    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+.skills-slider:hover .skills-track {
+    animation-play-state: paused;
 }
 
 /* icons */
 
 .skills-track{
+    flex-shrink: 0;
     display:flex;
     align-items:center;
     gap:70px;
     font-size:55px;
     color:#444;
-    width:max-content;
     animation:scrollSkills 20s linear infinite;
 }
-
-
 
 .skills-track svg{
     transition:0.3s;
@@ -40,6 +46,7 @@
 }
 
 
+
 @keyframes scrollSkills{
 
     0%{
@@ -47,7 +54,7 @@
     }
 
     100%{
-        transform:translateX(-50%);
+        transform:translateX(calc(-100% - 70px));
     }
 
 }

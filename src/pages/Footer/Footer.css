@@ -34,3 +34,24 @@
     transform:translateY(-4px) scale(1.2);
     color:white;
 }
+
+/* VIBE COUNTER */
+.vibe-counter {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 14px;
+    color: #aaa;
+}
+
+.vibe-text {
+    font-weight: 400;
+}
+
+.vibe-number {
+    font-family: inherit;
+    font-weight: 600;
+    color: #ddd;
+    min-width: 30px; 
+    text-align: right;
+}

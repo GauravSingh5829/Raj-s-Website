@@ -1,131 +1,194 @@
 .project{
-    margin:70px auto;
-    max-width:1200px;
-    padding:40px;
+    margin: 70px auto;
+    max-width: 1200px;
+    padding: 40px;
 }
 
 .title{
-    margin-bottom:70px;
-    font-size:42px;
-    color:#625f5f;
-    text-align:center;
-    position:relative;
+    margin-bottom: 70px;
+    font-size: 42px;
+    color: #625f5f;
+    text-align: center;
+    position: relative;
+    font-weight: 700;
 }
 
 .title::after{
-    content:"";
-    width:120px;
-    height:3px;
-    background:#3e3e3e;
-    display:block;
-    margin:15px auto 0;
-    border-radius:2px;
+    content: "";
+    width: 60px;
+    height: 4px;
+    background: #3e3e3e;
+    display: block;
+    margin: 15px auto 0;
+    border-radius: 2px;
 }
 
+/* SYMMETRICAL GRID */
 .projects-container{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:30px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
 }
 
-/* CARD */
+@media (max-width: 900px) {
+    .projects-container {
+        grid-template-columns: 1fr;
+    }
+}
 
+/* Base Card structure */
 .project-card{
-    background:rgba(255,255,255,0.05);
-    border-radius:15px;
-    /* Removed overflow:hidden so the Sneak Peek popup isn't cut off */
-    position: relative; /* Added to control stacking */
-    z-index: 1;         /* Added to establish base level */
-    transition:0.35s;
-    box-shadow:0 8px 25px rgba(0,0,0,0.4);
-    
+    position: relative;
+    border-radius: 15px;
+    z-index: 1;
+    background: rgba(255, 255, 255, 0.05); 
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 25px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+    transition: 0.35s;
 }
 
-.project-card:hover{
-    transform:translateY(-10px);
-    box-shadow:0 20px 40px rgba(0,0,0,0.15);
-    z-index: 50; /* Added: Brings the hovered card and popup above adjacent cards */
+/* Hover Pop Action */
+.project-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+    z-index: 50; 
 }
 
 /* IMAGE */
-
-.project-card img{
-    width:100%;
-    height:180px;
-    object-fit:cover;
-    transition:0.4s;
-    /* Added rounded corners here since overflow:hidden was removed from the parent */
+/* Target the SneakPeekWrapper's inner img via nested css */
+.project-card img {
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
 }
 
-.project-card:hover img{
-    transform:scale(1.05);
-}
-
 /* TEXT */
-
 .project-card h3{
-    font-size:20px;
-    margin:15px;
-    color:#333;
+    font-size: 20px;
+    margin: 15px 20px 5px;
+    color: #333;
+    font-weight: 600;
 }
 
 .project-card p{
-    margin:0 15px 15px;
-    font-size:14px;
-    color:#666;
-    line-height:1.5;
+    margin: 0 20px 20px;
+    font-size: 14px;
+    color: #666;
+    line-height: 1.5;
+    flex-grow: 1;
 }
 
-/* SKILLS */
-
+/* PREMIUM SKILLS (Light Theme) */
 .skills{
-    display:flex;
-    gap:8px;
-    flex-wrap:wrap;
-    justify-content:center;
-    margin-bottom:12px;
-    margin-top: 12px
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 0 20px 15px;
 }
 
-.skills a{
-    font-size:12px;
-    padding:5px 12px;
-    background:#222;
-    color:#fff;
-    border-radius:20px;
-    text-decoration:none;
-    transition:0.3s;
+.skills span{
+    font-size: 11px;
+    font-weight: 500;
+    padding: 6px 14px;
+    background: #222;
+    color: #fff;
+    border-radius: 20px;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    cursor: default;
 }
 
-.skills a:hover{
-    background:#555;
+.skills span:hover{
+    background: #555;
+    color: #fff;
+    border-color: rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 15px -3px rgba(0, 0, 0, 0.2);
 }
 
-/* BUTTONS */
-
+/* PREMIUM MAGNETIC BUTTON STYLE (Light Theme) */
 .btns{
-    display:flex;
-    justify-content:center;
-    gap:12px;
-    padding-bottom:18px;
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    padding: 0 20px;
 }
 
 .btn{
-    padding:7px 16px;
-    border-radius:25px;
-    border:1px solid #333;
-    text-decoration:none;
-    font-size:13px;
-    color:#333;
-    transition:0.3s;
+    padding: 9px 18px;
+    border-radius: 25px;
+    background: transparent;
+    border: 1px solid #333;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+    color: #333;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+}
+
+.btn i {
+    font-size: 15px;
+    color: #333;
 }
 
 .btn:hover{
-    background:#333;
-    color:#fff;
+    background: #333;
+    color: #fff;
+    box-shadow: 0 10px 20px -5px rgba(0,0,0,0.2);
+    transform: translateY(-3px) scale(1.02);
 }
+
+.btn:hover i {
+    color: #fff;
+}
+
 #project{
-  scroll-margin-top:40px;
+  scroll-margin-top: 40px;
+}
+
+
+/* --- PROJECT DOODLE --- */
+.project-doodle-container {
+  position: absolute;
+  left: -200px;
+  top: 10px;
+  width: 170px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  pointer-events: none;
+  color: #000000;
+  animation: float-doodle 4s ease-in-out infinite;
+}
+
+.project-doodle-text {
+  font-family: 'Caveat', cursive;
+  font-size: 21px;
+  text-align: right;
+  line-height: 1.2;
+  transform: rotate(-4deg);
+}
+
+.project-doodle-arrow {
+  margin-top: 5px;
+  margin-right: 15px;
+  transform: rotate(-10deg);
+}
+
+@keyframes float-doodle {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-6px) rotate(1deg); }
+}
+
+@media (max-width: 1450px) {
+  .project-doodle-container {
+    display: none;
+  }
 }

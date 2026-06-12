@@ -206,40 +206,53 @@ const SneakPeekScrollWrapper = ({ baseSrc, scrollSrc, alt, href }) => {
 
 export default function Project() {
   return (
-    <div className="app-preview-wrapper bg-white min-h-screen font-sans py-10">
-      
-      <section className="project" id="project">
-        <div className="title">
-          <h2>Project</h2>
-        </div>
-        <div className="projects-container">
-          {projects.map((project, index) => (
-            <div className="project-card" key={index}>
-              <SneakPeekScrollWrapper 
-                baseSrc={project.img} 
-                scrollSrc={project.scrollImg}
-                alt={project.title} 
-                href={project.previewLink} 
-              />
-              <h3>{project.title}</h3>
-              <p>{project.desc}</p>
-              <div className="skills">
-                {project.skills.map((skill, i) => (
-                  <a href="#" key={i}>{skill}</a>
-                ))}
+    <section className="project" id="project">
+      <div className="title">
+        <h2>Project</h2>
+      </div>
+      <div className="projects-container">
+        {projects.map((project, index) => (
+          <motion.div 
+            className="project-card" 
+            key={index}
+            initial={{ opacity: 0, y: 50, scale: 0.95 }}
+            whileInView={{ opacity: 1, y: 0, scale: 1 }}
+            viewport={{ once: true, margin: "0px 0px -100px 0px" }}
+            transition={{ duration: 0.6, delay: index * 0.1, ease: 'easeOut' }}
+          >
+            {index === 0 && (
+              <div className="project-doodle-container">
+                <span className="project-doodle-text">hover over any project to see a preview</span>
+                <svg className="project-doodle-arrow" width="60" height="50" viewBox="0 0 60 50">
+                  <path d="M 5, 10 Q 25, 5 45, 25 Q 50, 30 55, 35" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+                  <path d="M 42, 35 L 55, 35 L 55, 22" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
               </div>
-              <div className="btns">
-                <a href="https://github.com/GauravSingh5829" className="btn">
-                  <i className="fab fa-github"></i> GitHub
-                </a>
-                <a href={project.previewLink} className="btn" target="_blank" rel="noreferrer">
-                  <i className="fas fa-external-link-alt"></i> Live Demo
-                </a>
-              </div>
+            )}
+            <SneakPeekScrollWrapper 
+              baseSrc={project.img} 
+              scrollSrc={project.scrollImg}
+              alt={project.title} 
+              href={project.previewLink} 
+            />
+            <h3>{project.title}</h3>
+            <p>{project.desc}</p>
+            <div className="skills">
+              {project.skills.map((skill, i) => (
+                <span key={i}>{skill}</span>
+              ))}
             </div>
-          ))}
-        </div>
-      </section>
-    </div>
+            <div className="btns">
+              <a href="https://github.com/GauravSingh5829" className="btn" target="_blank" rel="noreferrer">
+                <i className="fab fa-github"></i> GitHub
+              </a>
+              <a href={project.previewLink} className="btn" target="_blank" rel="noreferrer">
+                <i className="fas fa-external-link-alt"></i> Live Demo
+              </a>
+            </div>
+          </motion.div>
+        ))}
+      </div>
+    </section>
   );
 }

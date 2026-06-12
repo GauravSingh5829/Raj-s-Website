@@ -1,0 +1,250 @@
+.experience {
+  margin: 70px auto;
+  max-width: 1000px;
+  padding: 40px;
+}
+
+/* Matching the title style of the website */
+.title {
+  margin-bottom: 70px;
+  font-size: 42px;
+  color: #625f5f;
+  text-align: center;
+  position: relative;
+}
+
+.title::after {
+  content: "";
+  width: 120px;
+  height: 3px;
+  background: #3e3e3e;
+  display: block;
+  margin: 15px auto 0;
+  border-radius: 2px;
+}
+
+/* Minimalist Timeline Structure */
+.timeline {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+  padding-left: 20px;
+}
+
+/* Static background path for the line */
+.timeline-line-bg {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 26px; /* center of the dot */
+  width: 2px;
+  background: rgba(0, 0, 0, 0.05); /* very faint border */
+  border-radius: 2px;
+}
+
+/* The dark dynamic line drawn by framer motion */
+.timeline-line-active {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 26px; /* center of the line */
+  width: 2px;
+  background: #333; /* accent color */
+  border-radius: 2px;
+  z-index: 1;
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 60px;
+  padding-left: 50px;
+}
+
+.timeline-item:last-child {
+  margin-bottom: 0;
+}
+
+.timeline-dot {
+  position: absolute;
+  left: 0;
+  top: 6px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #333; /* accent color */
+  border: 3px solid #fff;
+  box-shadow: 0 0 0 4px rgba(0,0,0,0.05); /* sleek glow */
+  z-index: 2;
+  transition: 0.3s ease;
+}
+
+.timeline-item:hover .timeline-dot {
+  transform: scale(1.3);
+  background: #555;
+}
+
+/* Glassy Card and Spotlight Effect */
+.timeline-content {
+  position: relative;
+  background: rgba(0, 0, 0, 0.015);
+  border: 1px solid rgba(0,0,0,0.04);
+  border-radius: 16px;
+  padding: 30px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+  overflow: hidden;
+  transition: box-shadow 0.3s, border-color 0.3s;
+}
+
+.timeline-content:hover {
+  box-shadow: 0 10px 40px rgba(0,0,0,0.06);
+  border-color: rgba(0,0,0,0.08);
+}
+
+.timeline-glow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 16px;
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.timeline-content:hover .timeline-glow {
+  opacity: 1;
+}
+
+/* Ensure inner content stays above glow */
+.timeline-header, .timeline-company, .timeline-desc, .timeline-skills, .timeline-achievements-wrapper, .timeline-expand-btn {
+  position: relative;
+  z-index: 10;
+}
+
+.timeline-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 5px;
+}
+
+.timeline-role {
+  font-size: 24px;
+  color: #222;
+  margin: 0;
+  font-weight: 700;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+.timeline-duration {
+  font-size: 14px;
+  color: #888;
+  font-family: monospace;
+  letter-spacing: 0.5px;
+}
+
+.timeline-company {
+  font-size: 18px;
+  color: #666;
+  margin: 0 0 15px 0;
+  font-family: 'Caveat', cursive;
+}
+
+.timeline-desc {
+  font-size: 16px;
+  color: #555;
+  line-height: 1.7;
+  margin: 0 0 15px 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* Feature 1: Expandable Achievements */
+.timeline-expand-btn {
+  background: transparent;
+  border: none;
+  color: #111;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  padding: 0 0 20px 0; /* Space below button before skills */
+  display: flex;
+  align-items: center;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+.timeline-expand-btn:hover {
+  text-decoration: underline;
+}
+
+.timeline-achievements-wrapper {
+  overflow: hidden;
+}
+
+.timeline-achievements {
+  padding-left: 20px;
+  margin-bottom: 20px;
+  list-style-type: square;
+}
+
+.timeline-achievements li {
+  font-size: 15px;
+  color: #444;
+  margin-bottom: 8px;
+  line-height: 1.6;
+}
+
+/* SKILLS */
+.timeline-skills {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.skill-tag {
+  font-size: 12px;
+  padding: 6px 14px;
+  background: rgba(0,0,0,0.04);
+  color: #444;
+  border-radius: 20px;
+  border: 1px solid rgba(0,0,0,0.05);
+  font-weight: 600;
+  display: inline-block; /* Essential for magnetic effect to calculate bounds safely */
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .timeline {
+    padding-left: 10px;
+  }
+  .timeline-line-bg, .timeline-line-active {
+    left: 16px;
+  }
+  .timeline-logo-container {
+    left: -8px; /* 16 - 24 */
+  }
+  .timeline-item {
+    padding-left: 50px;
+  }
+  .timeline-header {
+    flex-direction: column;
+  }
+  .timeline-duration {
+    margin-bottom: 5px;
+  }
+  .timeline-content {
+    padding: 20px;
+  }
+}
+
+
+#experience {
+  scroll-margin-top: 55px;
+}
+
+.about + .experience {
+  margin-top: 20px;
+}

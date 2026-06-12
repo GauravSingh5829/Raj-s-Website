@@ -1,5 +1,5 @@
 .contact{
-    margin:100px auto;
+    margin:70px auto;
     max-width:1200px;
     padding:40px;
 }
@@ -39,11 +39,12 @@
 .contact-info h3{
     font-size:28px;
     margin-bottom:20px;
-    color:#202020;
+    color:#d0d0d0;
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.25);
 }
 
 .contact-info p{
-    color:#242424;
+    color:#d0d0d0;
     margin-bottom:30px;
 }
 
@@ -55,14 +56,15 @@
     gap:15px;
     margin-bottom:20px;
     font-size:16px;
-    color:#232222;
+    color:#e0e0e0;
 }
 
 /* ICON */
 
 .contact-icon{
     font-size:22px;
-    color:#777777;
+    color:#d0d0d0;
+    filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.3));
     animation:iconFloat 3s ease-in-out infinite;
     transition:0.3s;
 }
@@ -133,4 +135,32 @@
 }
 #contact{
   scroll-margin-top:40px;
+}
+
+/* FORM STATUS MESSAGES */
+.form-status {
+    font-size: 15px;
+    font-weight: 500;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.form-status.success {
+    color: #1DB954; /* Clean green */
+}
+
+.form-status.error {
+    color: #ff3b30; /* Accent red */
+}
+
+/* CLICKABLE INFO LINKS */
+.info-item a {
+    color: #e0e0e0;
+    text-decoration: none;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.info-item a:hover {
+    color: #ffffff;
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
 }

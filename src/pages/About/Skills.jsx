@@ -51,16 +51,23 @@ return(
 
 <div className="skills">
 <div className="skills-slider">
-<div className="skills-track">
-
-{[...skills, ...skills].map((skill, index) => (
-  <div className="skill" key={index}>
-    {skill.icon}
-    <p>{skill.name}</p>
+  <div className="skills-track">
+    {skills.map((skill, index) => (
+      <div className="skill" key={`first-${index}`}>
+        {skill.icon}
+        <p>{skill.name}</p>
+      </div>
+    ))}
   </div>
-))}
-
-</div>
+  
+  <div className="skills-track" aria-hidden="true">
+    {skills.map((skill, index) => (
+      <div className="skill" key={`second-${index}`}>
+        {skill.icon}
+        <p>{skill.name}</p>
+      </div>
+    ))}
+  </div>
 </div>
 </div>
 
