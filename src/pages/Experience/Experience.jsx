@@ -4,40 +4,40 @@ import "./Experience.css";
 
 const experiences = [
   {
-    role: "Software Development Engineer (SDE) Intern",
+    role: "Software Development Engineer Intern",
     company: "Snowie.ai",
-    duration: "2024 - Present",
+    duration: "Feb 2026 - Jun 2026",
     desc: "Working on core product features, improving system performance, and shipping responsive web interfaces.",
     achievements: [
       "Designed and implemented high-performance React components.",
       "Optimized the core web-vitals resulting in a 20% speed improvement.",
       "Collaborated closely with the AI backend team to surface real-time data."
     ],
-    skills: ["React", "JavaScript", "Tailwind CSS"]
+    skills: ["React", "JavaScript", "Tailwind CSS", "Next.js", "TypeScript", "Node.js", "Express.js", "MongoDB", "REST APIs", "Git", "GitHub"]
   },
   {
     role: "Frontend Developer Intern",
     company: "Yogui Media",
-    duration: "2023 - 2024",
+    duration: "Jul 2024 - Sep 2024",
     desc: "Developed and maintained several client-facing interfaces. Optimized web application performance and collaborated with design teams to fulfill modern UX standards.",
     achievements: [
       "Rebuilt 3 legacy client websites in modern React.",
       "Integrated complex Framer Motion animations to enrich user experience.",
       "Ensured pixel-perfect mobile responsiveness across all devices."
     ],
-    skills: ["HTML", "CSS", "JavaScript", "React"]
+    skills: ["HTML", "CSS", "JavaScript", "React", "Tailwind CSS", "Bootstrap", "Redux", "REST APIs", "Git", "Responsive Design"]
   },
   {
     role: "Freelance Web Developer",
     company: "Self-Employed",
-    duration: "2022 - 2023",
+    duration: "Mar 2023 - Apr 2024",
     desc: "Designed and built custom portfolios and landing pages for local businesses, ensuring mobile responsiveness and blazing fast load times.",
     achievements: [
       "Delivered 5+ full-stack freelance platforms.",
       "Boosted client conversion rates by 30% via UX audits.",
       "Handled independent client communications and requirement gathering."
     ],
-    skills: ["React", "Node.js", "Figma"]
+    skills: ["React", "Node.js", "Figma", "Next.js", "Express.js", "MongoDB", "Tailwind CSS", "REST APIs", "Git", "Vercel"]
   }
 ];
 

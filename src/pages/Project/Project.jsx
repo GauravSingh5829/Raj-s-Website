@@ -42,7 +42,8 @@ const projects = [
     scrollImg: scrollImg1,
     desc: "A Beautiful Full Stack e-commerce experience for a luxury heritage brand. This project focuses on minimalist design and visual storytelling to showcase traditional Indian craftsmanship for a modern audience.",
     skills: ["React", "JavaScript", "Tailwind CSS ", "Node.js", "Express", "MongoDB", "RESTful APIs"],
-    previewLink: "https://sohwais.com/"
+    previewLink: "https://sohwais.com/",
+    githubLink: "https://github.com/GauravSingh5829/Sohwais"
   },
   {
     title: "Code Collaby",
@@ -50,7 +51,8 @@ const projects = [
     scrollImg: scrollImg2,
     desc: "CodeCollaby a real-time code collaboration platform allowing developers to write, edit, and run code together—anytime, anywhere.",
     skills: ["React.js", "Tailwind CSS", "JavaScript", "Node.js", "Express.js", "Socket.IO", "MongoDB", "JWT-based Auth System"],
-    previewLink: "https://codecollaby-frontend.onrender.com/"
+    previewLink: "https://codecollaby-frontend.onrender.com/",
+    githubLink: "https://github.com/GauravSingh5829/CodeCollaby"
   },
   {
     title: "Blink Chat",
@@ -58,17 +60,19 @@ const projects = [
     scrollImg: scrollImg3,
     desc: "Private, self-destructing chat rooms that disappear after 10 minutes. No accounts, no history, just secure conversations.",
     skills: ["React", "Next.js", "Tailwind CSS", "TanStack Query", "Upstash Realtime","Upstash Redis"],
-    previewLink: "https://blinkchat-anonymous-chat-app.vercel.app/"
+    previewLink: "https://blinkchat-anonymous-chat-app.vercel.app/",
+    githubLink: "https://github.com/GauravSingh5829/BlinkChat"
   },
   {
-    title: "Blog Website",
+    title: "Coming...Have Patience",
     img: img4,
     scrollImg: scrollImg4,
-    desc: "Clean and simple blogging platform with markdown support.",
-    skills: ["HTML", "Tailwind", "JavaScript"],
-    previewLink: "https://vercel.com/blog"
+    desc: 'Something "CRAZY" is about to drop, just a bit more wait!!',
+    skills: [],
+    previewLink: "#contact",
+    isComingSoon: true
   },
-  {
+  /* {
     title: "Game Landing Page",
     img: img5,
     scrollImg: scrollImg5,
@@ -83,10 +87,10 @@ const projects = [
     desc: "Task tracking web app with CRUD features and clean UI.",
     skills: ["HTML", "CSS", "JS"],
     previewLink: "https://linear.app"
-  }
+  } */
 ];
 
-const SneakPeekScrollWrapper = ({ baseSrc, scrollSrc, alt, href }) => {
+const SneakPeekScrollWrapper = ({ baseSrc, scrollSrc, alt, href, isComingSoon }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
 
@@ -123,22 +127,43 @@ const SneakPeekScrollWrapper = ({ baseSrc, scrollSrc, alt, href }) => {
       onMouseLeave={() => setIsOpen(false)}
       onMouseMove={handleMouseMove}
       onClick={() => {
-        if (href) window.open(href, "_blank", "noopener,noreferrer");
+        if (href) {
+          if (isComingSoon && href.startsWith('#')) {
+            window.location.hash = href;
+          } else {
+            window.open(href, "_blank", "noopener,noreferrer");
+          }
+        }
       }}
     >
       {/* BASE CARD IMAGE (Thumbnail) */}
-      <div style={{ width: '100%', height: '180px', overflow: 'hidden', borderTopLeftRadius: '15px', borderTopRightRadius: '15px' }}>
+      <div style={{ width: '100%', height: '180px', overflow: 'hidden', borderTopLeftRadius: '15px', borderTopRightRadius: '15px', position: 'relative' }}>
         <img 
           src={baseSrc} 
           alt={alt} 
-          style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.4s' }} 
+          style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.4s', filter: isComingSoon ? 'blur(8px)' : 'none', transform: isComingSoon ? 'scale(1.1)' : 'none' }} 
         />
+        {isComingSoon && (
+          <div style={{
+            position: 'absolute',
+            top: 0, left: 0, right: 0, bottom: 0,
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+            backgroundColor: 'rgba(0,0,0,0.3)',
+            color: 'white',
+            fontSize: '1.8rem',
+            fontWeight: 'bold',
+            zIndex: 10,
+            textShadow: '0px 2px 4px rgba(0,0,0,0.8)'
+          }}>
+            Comingggg..
+          </div>
+        )}
       </div>
 
       {/* SNEAK PEEK POPUP (Using the scrollSrc) */}
       <div style={{ position: 'absolute', zIndex: 50, left: '50%', top: '50%', transform: 'translate(-50%, -50%)', pointerEvents: 'none' }}>
         <AnimatePresence>
-          {isOpen && isMounted && (
+          {isOpen && isMounted && !isComingSoon && (
             <motion.div
               initial={{ opacity: 0, scale: 0.6 }}
               animate={{
@@ -234,6 +259,7 @@ export default function Project() {
               scrollSrc={project.scrollImg}
               alt={project.title} 
               href={project.previewLink} 
+              isComingSoon={project.isComingSoon}
             />
             <h3>{project.title}</h3>
             <p>{project.desc}</p>
@@ -243,10 +269,10 @@ export default function Project() {
               ))}
             </div>
             <div className="btns">
-              <a href="https://github.com/GauravSingh5829" className="btn" target="_blank" rel="noreferrer">
+              <a href={project.githubLink || "https://github.com/GauravSingh5829"} className="btn" target="_blank" rel="noreferrer">
                 <i className="fab fa-github"></i> GitHub
               </a>
-              <a href={project.previewLink} className="btn" target="_blank" rel="noreferrer">
+              <a href={project.previewLink} className="btn" target={project.isComingSoon ? "_self" : "_blank"} rel="noreferrer">
                 <i className="fas fa-external-link-alt"></i> Live Demo
               </a>
             </div>
